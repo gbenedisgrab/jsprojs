@@ -20,10 +20,10 @@ function drawForce() {
 
 function calcForce(q1, pos1, q2, pos2){ //in C,C,m
   let K = 9*Math.pow(10,5); //K = 9*10**9 Nm**2/C**2
-  distance = pos1.dist(pos2)
+  distance = pos1.dist(pos2);
   if (distance == 0) return null;
-  let v = p5.Vector.sub(pos1,pos2);
-  return v.copy().normalize().mult((K*q1*q2) / (distance*distance));
+  let fmag = K*q1*q2 / (distance*distance); // scalar magnitude of force
+  return p5.Vector.sub(pos1,pos2).normalize().mult(fmag);
 }
 
 function drawParticle(pos) {
