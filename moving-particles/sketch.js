@@ -8,21 +8,19 @@ class Particle {
   }
   calcForce(){
     let force = createVector(0,0);
-    for (let p of particles) {
-      if (p != this) {
-        force = force.add(eForce(this.q,this.pos,p.q,p.pos));
-      }
-    }
+    particles.forEach((p)=>{
+      if (p!= this) force.add(eForce(this.q,this.pos,p.q,p.pos))
+    })
     return force;
   }
-  drawVector(v,shade) {
+  drawVector(v,shading) {
     push();
     translate(this.pos.x,this.pos.y);
-    stroke(shade);
+    stroke(shading);
     strokeWeight(5);
     line(0,0,v.x,v.y);
     translate(v.x,v.y)
-    fill(shade);
+    fill(shading);
     strokeWeight(0);
     rotate(v.heading()+PI/2);
     triangle(-10,0,10,0,0,-20);

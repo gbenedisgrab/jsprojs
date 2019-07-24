@@ -1,5 +1,5 @@
 function drawForce() {
-    force = calcForce(q1.value(),pos1,q2.value(),pos2);
+    force = calcForce(q1.value(),pos1,q2.value(),pos2).div(2);
     if (force == null) {
       inf = true;
       return;
@@ -13,8 +13,8 @@ function drawForce() {
     translate(force.x,force.y)
     fill(255);
     strokeWeight(0);
-    rotate(force.heading()+PI/2);
-    triangle(-10,0,10,0,0,-20);
+    rotate(force.heading()-PI/2);
+    triangle(-10,0,10,0,0,force.mag()>20 ? 20 : force.mag()); // figure this out
     pop();
 }
 
