@@ -14,6 +14,7 @@ function updateFieldLines() {
   for (let p of particles){
     p.linesDone=false;
     p.fields = [];
+    // I can add code to see how it works.
   }
 }
 
